@@ -6,8 +6,8 @@ CREATE DATABASE escola;
  
 CREATE TABLE aluno(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	idade INT,
-    nomeAluno varchar(255) 
+	idade INT CHECK(idade<=18),
+    nomeAluno varchar(255)
 );
 
 CREATE TABLE disciplina(
@@ -27,6 +27,8 @@ CREATE TABLE professor(
 INSERT INTO aluno(idade,nomeAluno) values (16,"andré");
 INSERT INTO aluno(idade,nomeAluno) values (14,"tomas");
 INSERT INTO aluno(idade,nomeAluno) values (17,"Julieta");
+INSERT INTO aluno(idade,nomeAluno) values (18,"Jake");
+INSERT INTO aluno(idade,nomeAluno) values (19,"Lucas");
 
 INSERT INTO professor(nomeProfessor) values ("Garbriela");
 INSERT INTO professor(nomeProfessor) values ("Hanna");
@@ -40,4 +42,6 @@ INSERT INTO disciplina(nomeDisciplina) values ("Arte");
 
 -- ALTER TABLE aluno add sexo char;
 
--- SELECT * FROM disciplina group by disciplina.nomeDisciplina;
+-- SELECT * FROM aluno WHERE idade BETWEEN 16 AND 17 ;
+
+ SELECT * FROM aluno;
