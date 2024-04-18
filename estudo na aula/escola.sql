@@ -28,7 +28,7 @@ INSERT INTO aluno(idade,nomeAluno) values (16,"andré");
 INSERT INTO aluno(idade,nomeAluno) values (14,"tomas");
 INSERT INTO aluno(idade,nomeAluno) values (17,"Julieta");
 INSERT INTO aluno(idade,nomeAluno) values (18,"Jake");
-INSERT INTO aluno(idade,nomeAluno) values (19,"Lucas");
+INSERT INTO aluno(idade,nomeAluno) values (12,"Lucas");
 
 INSERT INTO professor(nomeProfessor) values ("Garbriela");
 INSERT INTO professor(nomeProfessor) values ("Hanna");
@@ -44,4 +44,4 @@ INSERT INTO disciplina(nomeDisciplina) values ("Arte");
 
 -- SELECT * FROM aluno WHERE idade BETWEEN 16 AND 17 ;
 
- SELECT * FROM aluno;
+ SELECT * FROM aluno WHERE aluno.nomeAluno LIKE'%A%';
