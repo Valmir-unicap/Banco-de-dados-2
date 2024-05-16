@@ -6,7 +6,7 @@ USE hotelaria;
 
 CREATE TABLE cliente(
 idCliente INT PRIMARY KEY auto_increment,
-nomeCliente VARCHAR(255),
+nomeCliente VARCHAR(50),
 idadeCliente INT,
 sexoCliente CHAR CHECK(sexoCliente = 'm' OR sexoCliente = 'f' OR sexoCliente = 'o'),
 endereco VARCHAR(255),
@@ -15,7 +15,7 @@ rendaCliente FLOAT
 
 CREATE TABLE funcionario(
 idFuncionario INT PRIMARY KEY auto_increment,
-nomeFuncionario VARCHAR(255),
+nomeFuncionario VARCHAR(50),
 idadeFuncionario INT,
 sexoFuncionario CHAR CHECK(sexoFuncionario = 'm' OR sexoFuncionario = 'f' OR sexoFuncionario = 'o'),
 salario FLOAT,
@@ -80,7 +80,7 @@ GROUP BY cargo;
 -- 2. Retornar quantos quartos estão ocupados por andar
 SELECT andar, COUNT(*) AS quartos_ocupados
 FROM quarto
-WHERE ocupado = 'sim'
+WHERE ocupado = true
 GROUP BY andar;
 
 -- 3. Retornar a quantidade e o valor arrecadado por cada quarto agrupado pelo mês
@@ -101,11 +101,14 @@ ADD COLUMN observacao VARCHAR(255);
 CREATE USER responsavellimpeza;
 GRANT SELECT, INSERT ON visao_faxina TO responsavellimpeza;
 
+CREATE USER analistacontas;
+GRANT SELECT, INSERT ON visao_corredores TO analistacontas;
+
 -- Criando as visões
 CREATE VIEW visao_corredores AS
 SELECT quarto.andar, SUM(quarto.diaria) AS receita_total
 FROM quarto
-WHERE ocupado = 'sim'
+WHERE ocupado = true
 GROUP BY andar;
 
 CREATE VIEW visao_funcionario AS
